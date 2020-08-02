@@ -15,6 +15,42 @@ private
     o ℓ e o′ ℓ′ e′ : Level
     C D E : Category o ℓ e
 
+-- Mathematical Definition
+-- -----------------------
+-- A natural transformation `η: F ⇒ G` is a mapping between two functors
+-- `F, G: C ⇒ D`. It consists of a family of arrows `η_X: FX ⇒ GX` in `D`, for
+-- each object `X` in `C`, such that the following diagram commutes for each `f:
+-- X ⇒ Y` in `C`:
+--          η_X
+--     FX ------> GX
+--      |          |
+--    Ff|          | Gf
+--      |          |
+--      v   η_Y    v
+--     FY ------> GY
+--
+-- In other words, a natural transformation connects the image of `F` to the
+-- image of `G` in a coherent way.
+--
+-- Diagramatically, natural transformations are notated as follows:
+--          C
+--         / \
+--        / η \
+--     F | ==> | G
+--        \   /
+--         \ /
+--          D
+--
+-- Examples
+-- --------
+-- Examples of functors can be found in the folder `Categories.NaturalTransformation`.
+-- Notable examples of natural transformations include
+--  * the identity transformation `id: F ⇒ F` from a functor to itself,
+--    (`Categories.NaturalTransformation.Core`),
+--  * the vertical composition `η∘ᵥθ: F ⇒ H` of two natural transformations
+--    `η: G ⇒ H` and `θ: F ⇒ G` (`Categories.NaturalTransformation.Core`).
+--  * the horizontal composition `η∘ₕθ: FG ⇒ HI` of two natural transformations
+--    `η: F ⇒ H` and `θ: G ⇒ I` (`Categories.NaturalTransformation.Core`).
 record NaturalTransformation {C : Category o ℓ e}
                              {D : Category o′ ℓ′ e′}
                              (F G : Functor C D) : Set (o ⊔ ℓ ⊔ ℓ′ ⊔ e′) where
