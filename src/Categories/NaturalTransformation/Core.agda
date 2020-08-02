@@ -41,6 +41,11 @@ private
 --         \ /
 --          D
 --
+-- Further reading:
+--  * https://en.wikipedia.org/wiki/Natural_transformation
+--  * https://ncatlab.org/nlab/show/natural+transformation
+--
+--
 -- Examples
 -- --------
 -- Examples of functors can be found in the folder `Categories.NaturalTransformation`.

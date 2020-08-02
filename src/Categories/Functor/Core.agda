@@ -23,6 +23,10 @@ private
 --  * `F` preserves composition: `F₁(f ∘ g) = F₁(f) ∘ F₁(g)` for each `f: Y ⇒ Z`
 --    and `g: X ⇒ Y` in `C`.
 --
+-- Further reading:
+--  * https://en.wikipedia.org/wiki/Functor
+--  * https://ncatlab.org/nlab/show/functor
+--
 --
 -- Examples
 -- --------

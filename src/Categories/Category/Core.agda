@@ -21,6 +21,9 @@ import Relation.Binary.Reasoning.Setoid as SetoidR
 --  * Composition is associative: `(f ∘ g) ∘ h = f ∘ (g ∘ h)` for each
 --    `f : C ⇒ D`, `g : B ⇒ C`, `h : A ⇒ B`.
 --
+-- Further reading:
+--  * https://en.wikipedia.org/wiki/Category_(mathematics)
+--  * https://ncatlab.org/nlab/show/category
 --
 -- Examples
 -- --------
