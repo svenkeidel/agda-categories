@@ -7,8 +7,42 @@ open import Function.Base using (flip)
 open import Relation.Binary using (Rel; IsEquivalence; Setoid)
 import Relation.Binary.Reasoning.Setoid as SetoidR
 
--- Basic definition of a |Category| with a Hom setoid.
--- Also comes with some reasoning combinators (see HomReasoning)
+
+-- Mathematical Definition
+-- -----------------------
+-- A category consists of
+--  * a collection of objects `A,B,C...` and a collection of arrows `(⇒)` between
+--    objects called *hom-sets*,
+--  * an identity arrow `id : A ⇒ A` for each object `A`,
+--  * a composition operation `f ∘ g : A ⇒ C` for each arrow `f : B ⇒ C` and `g : A ⇒ B`.
+--
+-- Furthermore, identity and composition obey the following laws:
+--  * Identity is left and right unital: `id ∘ f = f = f ∘ id` for each arrow `f : A ⇒ B`
+--  * Composition is associative: `(f ∘ g) ∘ h = f ∘ (g ∘ h)` for each
+--    `f : C ⇒ D`, `g : B ⇒ C`, `h : A ⇒ B`.
+--
+--
+-- Examples
+-- --------
+-- Examples of categories can be found in the folder `Categories.Category.Instance`.
+-- Notable examples include
+--  * `Set`, the category of sets and functions (`Categories.Category.Instance.Sets`)
+--  * `Poset`, the category of partial orderes sets and monotone functions (`Categories.Category.Instance.Cats`)
+--  * `Cat`, the category of categories and functors (`Categories.Category.Instance.Cats`)
+--
+-- Implementation Details
+-- ----------------------
+-- Each category comes equipped with an equivalence relation `(≈)` on arrows.
+-- This equivalence relation is used, instead of equality `(=)`, to describe the
+-- laws of the category, e.g., `id ∘ f ≈ f`. This allows instances of categories
+-- to describe how arrows should be compared. For example, the category `Set` of
+-- sets and functions uses a point-wise equality on functions instead of `(=)`
+-- to avoid the problem of functional extensionality.
+--
+-- To simplify the reasoning with this equivalence relation in Agda, the
+-- relation forms a `Setoid` on hom-sets. Furthermore, the composition operation
+-- respect the equivalence relation. In categorical terms, this means that a
+-- category is enriched over the category of setoids.
 record Category (o ℓ e : Level) : Set (suc (o ⊔ ℓ ⊔ e)) where
   eta-equality
   infix  4 _≈_ _⇒_
